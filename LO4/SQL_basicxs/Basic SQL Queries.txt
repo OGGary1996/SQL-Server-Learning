@@ -1,0 +1,44 @@
+--This is just a sample lecture, there are a number of queries you can speak to here, if an assignment is modified, this lecture should be too. 
+--It doesn't need to be all inclusive, students can be expected to research some functions for example, but should know how to use them within a queries structure.
+
+
+--SELECT Statement: Retrieves rows from the database and enables the selection of one or many rows or columns from one or many tables in SQL Server.
+
+SELECT * FROM Student;
+
+SELECT ID, LastName, FirstName, [Address], City, Province 
+FROM Student
+
+-- WHERE CLAUSE: Specifies the search condition for the rows returned by the query.
+--https://docs.microsoft.com/en-us/sql/t-sql/queries/where-transact-sql?view=sql-server-ver15
+
+SELECT ID, LastName, FirstName, [Address], City, Province 
+FROM Student
+WHERE FirstName = 'Wilma'
+
+-- WHERE CLAUSE with Wildcard
+
+SELECT ID, LastName, FirstName, [Address], City, Province 
+FROM Student
+WHERE FirstName LIKE 'Wil%'
+
+
+SELECT ID, LastName, FirstName, [Address], City, Province 
+FROM Student
+WHERE LastName LIKE '%owm%'
+
+
+--Order By: Sorts data returned by a query in SQL Server. Use this clause to:
+	--1 .Order the result set of a query by the specified column list and, optionally, limit the rows returned to a specified range.
+	--The order in which rows are returned in a result set are not guaranteed unless an ORDER BY clause is specified.
+	--2 .Determine the order in which ranking function values are applied to the result set.
+SELECT CourseCode, Title, Fee, Instructor FROM Course ORDER BY Fee ASC
+
+
+--In line Fuctions and Column Alias
+SELECT MAX(Fee) AS [Most Expensive Class] FROM Course
+
+
+
+--Including basic mathmatics
+SELECT CourseCode,Fee, (Fee *1.05) As [FeeWithTax] FROM Course
